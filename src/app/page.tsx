@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import IntroScreen from "@/components/IntroScreen";
+import SecretAuth from "@/components/SecretAuth";
 import FloatingPetals from "@/components/FloatingPetals";
 import Sparkles from "@/components/Sparkles";
 import CursorHeart from "@/components/CursorHeart";
@@ -16,7 +17,12 @@ import LoveLetter from "@/components/LoveLetter";
 import EndingScene from "@/components/EndingScene";
 
 export default function Home() {
+  const [isAuthorized, setIsAuthorized] = useState(false);
   const [introComplete, setIntroComplete] = useState(false);
+
+  if (!isAuthorized) {
+    return <SecretAuth onAuthorized={() => setIsAuthorized(true)} />;
+  }
 
   return (
     <>

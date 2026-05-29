@@ -10,10 +10,10 @@ export default function MusicPlayer() {
 
   useEffect(() => {
     const audio = new Audio(
-      "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+      "/Lana_DelRey_-_Without_You_(mp3.pm).mp3"
     );
     audio.loop = true;
-    audio.volume = 0.3;
+    audio.volume = 0.2;
     audioRef.current = audio;
     setIsLoaded(true);
     return () => {
