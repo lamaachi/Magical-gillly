@@ -6,29 +6,21 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function MusicToggle() {
   const [playing, setPlaying] = useState(false);
   const [visible, setVisible] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const ref = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-    const audio = new Audio(
-      "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-    );
-    audio.loop = true;
-    audio.volume = 0.2;
-    audioRef.current = audio;
+    const a = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
+    a.loop = true;
+    a.volume = 0.15;
+    ref.current = a;
     setVisible(true);
-    return () => {
-      audio.pause();
-      audio.src = "";
-    };
+    return () => { a.pause(); a.src = ""; };
   }, []);
 
   const toggle = () => {
-    if (!audioRef.current) return;
-    if (playing) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play().catch(() => {});
-    }
+    if (!ref.current) return;
+    if (playing) ref.current.pause();
+    else ref.current.play().catch(() => {});
     setPlaying(!playing);
   };
 
@@ -36,20 +28,20 @@ export default function MusicToggle() {
     <AnimatePresence>
       {visible && (
         <motion.button
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           onClick={toggle}
-          className="fixed bottom-8 right-8 z-50 w-10 h-10 flex items-center justify-center cursor-pointer bg-white/5 hover:bg-white/10 transition-colors duration-500 border border-white/10"
+          className="fixed bottom-8 right-8 z-50 w-9 h-9 flex items-center justify-center cursor-pointer border border-gold-faint bg-black/40 hover:bg-gold-faint/10 transition-all duration-500"
           aria-label={playing ? "Pause" : "Play"}
         >
           {playing ? (
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(245,240,235,0.6)" strokeWidth="1.5">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(196,154,60,0.6)" strokeWidth="1.5">
               <rect x="6" y="4" width="4" height="16" rx="1" />
               <rect x="14" y="4" width="4" height="16" rx="1" />
             </svg>
           ) : (
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(245,240,235,0.6)" strokeWidth="1.5">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(196,154,60,0.6)" strokeWidth="1.5">
               <polygon points="5,3 19,12 5,21" />
             </svg>
           )}
