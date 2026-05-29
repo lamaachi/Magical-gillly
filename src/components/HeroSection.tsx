@@ -28,10 +28,18 @@ export default function HeroSection() {
         className="absolute inset-0 transition-transform duration-100 ease-out"
       >
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-100"
+          className="absolute inset-0 bg-cover bg-center opacity-25"
           style={{ backgroundImage: "url('/moments/lotus.jpg')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-dark-bg via-dark-bg to-dark-bg/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-dark-bg/80 via-dark-bg/90 to-dark-bg/95" />
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-10 left-10 w-36 h-36 rounded-full border border-lotus-pink/20 opacity-60" />
+          <div className="absolute bottom-10 right-10 w-44 h-44 rounded-full border border-soft-purple/20 opacity-60" />
+          <svg className="absolute left-1/2 top-1/4 w-52 -translate-x-1/2 opacity-10" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="80" stroke="#f8b4c8" strokeWidth="1.5" />
+            <path d="M100 20 C80 60 60 60 50 90 C30 130 80 150 100 130 C120 150 170 130 150 90 C140 60 120 60 100 20 Z" stroke="#f8b4c8" strokeWidth="1.2" fill="none" />
+          </svg>
+        </div>
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-lotus-pink/5 rounded-full blur-[120px]" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-soft-purple/5 rounded-full blur-[100px]" />
       </div>
@@ -49,13 +57,27 @@ export default function HeroSection() {
             className="mb-8"
           >
             <svg
-              className="w-12 h-12 sm:w-16 sm:h-16 mx-auto animate-heartbeat"
-              viewBox="0 0 24 24"
-              fill="#f8b4c8"
+              className="w-16 h-16 sm:w-20 sm:h-20 mx-auto text-lotus-pink animate-heartbeat"
+              viewBox="0 0 128 128"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+              <path d="M64 12c-10 10-22 18-36 20 0 0 20 8 32 28 12-20 32-28 32-28C86 30 74 22 64 12Z" fill="#f8b4c8" />
+              <path d="M64 12c10 10 22 18 36 20 0 0-20 8-32 28-12-20-32-28-32-28C42 30 54 22 64 12Z" fill="#f8b4c8" />
+              <path d="M64 34c-14 14-30 28-30 46 0 14 11 26 26 26h8c15 0 26-12 26-26 0-18-16-32-30-46Z" fill="#ffffff" fillOpacity="0.1" />
+              <circle cx="64" cy="74" r="6" fill="#d4a843" />
             </svg>
           </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.45 }}
+            className="font-arabic text-2xl sm:text-3xl text-lotus-pink/70 italic mb-4"
+            dir="rtl"
+          >
+            إلى أجمل روح
+          </motion.p>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
